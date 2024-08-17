@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1wv4e7wkhrp8"]
+
+[ext_resource type="Texture2D" uid="uid://bo3k2ekps1dsh" path="res://assets/tiles.png" id="1_utdss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twkkr"]
+size = Vector2(64, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qdpj0"]
+texture = ExtResource("1_utdss")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_t6aau"]
+sources/0 = SubResource("TileSetAtlasSource_qdpj0")
+
+[node name="rowTile" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_twkkr")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_t6aau")
+format = 2
+layer_0/tile_data = PackedInt32Array(-2, 65536, 0, -1, 65536, 0, -65536, 65536, 0, -65535, 65536, 0)
