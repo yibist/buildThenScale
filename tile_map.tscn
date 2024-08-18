@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqocy348bie65"]
 
-[ext_resource type="Texture2D" uid="uid://bo3k2ekps1dsh" path="res://assets/tiles.png" id="1_q0ydu"]
+[ext_resource type="Texture2D" uid="uid://b4y078byrgrlm" path="res://assets/tiles.png" id="1_q0ydu"]
 [ext_resource type="Script" path="res://scripts/tile_map.cs" id="2_v8am3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y8mhd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_445bf"]
 texture = ExtResource("1_q0ydu")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -12,20 +12,55 @@ texture = ExtResource("1_q0ydu")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_kikxy"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_y8mhd")
+sources/1 = SubResource("TileSetAtlasSource_445bf")
 
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_kikxy")
 format = 2
 layer_0/name = "base"
-layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 65529, 0, 0, 65528, 0, 0, 65527, 0, 0, 65526, 0, 0, 65525, 0, 0, -65529, 65536, 0, -65530, 65536, 0, 8, 0, 0, -65528, 0, 0, -65531, 0, 0)
+layer_0/tile_data = PackedInt32Array(65535, 1, 2, 0, 65537, 1, 1, 1, 2, 2, 65537, 2, 3, 65537, 1, 4, 1, 2, 5, 196609, 1, 6, 65537, 2, 7, 65537, 1, 65534, 65537, 1, 65533, 1, 2, 65532, 1, 2, 65531, 1, 2, 65530, 65537, 1, 65529, 65537, 1, 65528, 1, 2, 65527, 1, 2, 65526, 65537, 2, 65525, 1, 2, 8, 196609, 1, -65528, 65537, 2, -65531, 65537, 2, 65544, 196609, 0, 65543, 196609, 2, 65542, 196609, 1, 65541, 196609, 2, 65540, 196609, 1, 65539, 196609, 2, 65538, 196609, 0, 65537, 196609, 0, 65536, 196609, 1, 131071, 196609, 1, 131070, 196609, 2, 131069, 196609, 0, 131068, 196609, 1, 131067, 196609, 1, 131066, 196609, 0, 131065, 196609, 0, 131064, 196609, 2, 131063, 196609, 2, 131062, 196609, 1, 131061, 196609, 2, 196597, 196609, 0, 196598, 196609, 0, 196599, 196609, 1, 196600, 196609, 1, 196601, 196609, 2, 196602, 196609, 1, 196603, 196609, 2, 196604, 196609, 2, 196605, 196609, 0, 196606, 196609, 2, 196607, 196609, 0, 131072, 196609, 0, 131073, 196609, 0, 131074, 196609, 0, 131075, 196609, 1, 131076, 196609, 2, 131077, 196609, 0, 131078, 196609, 2, 131079, 196609, 2, 131080, 196609, 2, -589829, 65537, 2, -589828, 65537, 1, -589827, 1, 2, -589826, 65537, 2, -589825, 65537, 2, -655360, 65537, 2)
 layer_1/name = "active"
 layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_v8am3")
