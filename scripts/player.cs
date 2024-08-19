@@ -11,6 +11,10 @@ public partial class player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (TetrisOn.Instance != null && TetrisOn.Instance.On)
+		{
+			return;
+		}
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.

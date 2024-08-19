@@ -107,18 +107,19 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5hwmb"]
-radius = 9.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exuwi"]
+size = Vector2(15, 28)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 script = ExtResource("1_q87kh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_d5b6l")
-animation = &"move"
+animation = &"idle"
+frame_progress = 0.234518
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
-shape = SubResource("CircleShape2D_5hwmb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(-0.5, -14)
+shape = SubResource("RectangleShape2D_exuwi")

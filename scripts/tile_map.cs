@@ -2,24 +2,28 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 public partial class tile_map : TileMap
 {
 	// pieces
 	SortedDictionary<string, Vector2I[]> pieces;
 	// pieces used for this level
-	string[] pieceTypes;
+	[Export]
+	public static string[] pieceTypes = { };
 	int rotation;
 	int tileId;
 	Vector2I[] pieceAtlases;
 	int baseLayer;
 	int activeLayer;
 	Vector2I[] clockwiseRotationMatrix;
-	Vector2I startPosition;
-	Vector2I currentPosition;
-
+	public static Vector2I startingPostition;
+	public static Vector2I currentPosition;
 	float steps;
 	int reqSteps;
+
+	public Vector2I[] placedPieceLocations;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -36,17 +40,21 @@ public partial class tile_map : TileMap
 			{ "T", new Vector2I[] { new(0, 1), new(-1, 0), new(0, 0), new(1, 0) } },
 			{ "Z", new Vector2I[] { new(-1, 1), new(0, 1), new(0, 0), new(1, 0) } },
 		};
-		pieceAtlases = new Vector2I[] { new(0, 0), new(1, 0), new(2, 0),new(0, 1) };
+		pieceAtlases = new Vector2I[] { new(0, 0), new(1, 0), new(2, 0), new(0, 1) };
 		clockwiseRotationMatrix = new Vector2I[] { new(0, -1), new(1, 0) };
-		pieceTypes = new string[] { "T", "L" };
-		startPosition = currentPosition = new Vector2I(5, -10);
+		currentPosition = startingPostition;
 		steps = 0;
 		reqSteps = 1;
+		placedPieceLocations = Array.Empty<Vector2I>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (!TetrisOn.Instance.On)
+		{
+			return;
+		}
 		getCurrentPiece();
 		if (Input.IsActionJustPressed("ui_up"))
 		{
@@ -115,6 +123,18 @@ public partial class tile_map : TileMap
 	public void removePiece()
 	{
 		pieceTypes = pieceTypes.Skip(1).ToArray();
+		if (pieceTypes.Length == 0)
+		{
+			TetrisOn.Instance.On = false;
+		}
+	}
+
+	public void clearOldPieces()
+	{
+		foreach (Vector2I cell in placedPieceLocations)
+		{
+			EraseCell(activeLayer, currentPosition + cell);
+		}
 	}
 	public void drawPiece(Vector2I atlas)
 	{
@@ -129,9 +149,10 @@ public partial class tile_map : TileMap
 		{
 			EraseCell(activeLayer, currentPosition + cell);
 			SetCell(baseLayer, currentPosition + cell, tileId, atlas);
+			placedPieceLocations.Append(currentPosition + cell);
 		}
 		removePiece();
-		currentPosition = startPosition;
+		currentPosition = startingPostition;
 	}
 	public bool canMove(Vector2I dir)
 	{
