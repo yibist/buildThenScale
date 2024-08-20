@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsr80jjegcw3e"]
+
+[ext_resource type="FontFile" uid="uid://bixolyai7tqtb" path="res://assets/Minecraft.ttf" id="1_excag"]
+[ext_resource type="Script" path="res://scripts/start_button.cs" id="2_3wr6a"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vy6o4"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_excag")
+theme_override_font_sizes/font_size = 25
+text = "WASD - Movement
+R - Reset"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_excag")
+theme_override_font_sizes/font_size = 50
+text = "Build then Scale"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer"]
+texture_filter = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.191189, 0.20261, 0.182289, 1)
+theme_override_fonts/font = ExtResource("1_excag")
+theme_override_font_sizes/font_size = 40
+text = "Start"
+icon = SubResource("CanvasTexture_vy6o4")
+script = ExtResource("2_3wr6a")
+
+[connection signal="button_down" from="VBoxContainer/MarginContainer/Button" to="VBoxContainer/MarginContainer/Button" method="_on_button_down"]
