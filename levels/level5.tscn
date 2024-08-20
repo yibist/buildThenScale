@@ -1,13 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyh4e88nv2ktq"]
+[gd_scene load_steps=7 format=3 uid="uid://dyh4e88nv2ktq"]
 
 [ext_resource type="Script" path="res://scripts/game.cs" id="1_j4wu2"]
 [ext_resource type="PackedScene" uid="uid://mqpbwl280q71" path="res://book.tscn" id="1_jtxci"]
 [ext_resource type="PackedScene" uid="uid://bgfg4pwmftq0b" path="res://player.tscn" id="2_tggs6"]
 [ext_resource type="PackedScene" uid="uid://nnvv7dubp66w" path="res://portal.tscn" id="3_5ihj3"]
 [ext_resource type="PackedScene" uid="uid://dqocy348bie65" path="res://tile_map.tscn" id="4_hlqno"]
+[ext_resource type="FontFile" uid="uid://bixolyai7tqtb" path="res://assets/Minecraft.ttf" id="6_mt31b"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_j4wu2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -335.0
+offset_top = -134.0
+offset_right = 15.0
+offset_bottom = -78.0
+theme_override_fonts/font = ExtResource("6_mt31b")
+text = "Red and Blue Pieces stick if you move 
+them Against a wall."
 
 [node name="book" parent="." instance=ExtResource("1_jtxci")]
 position = Vector2(-56, -13)

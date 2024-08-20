@@ -6,7 +6,6 @@ using System.Linq;
 public partial class tile_map : TileMap
 {
 	SortedDictionary<string, Vector2I[]> pieces;
-	[Export]
 	public static string[] pieceTypes = { };
 	int rotation;
 	int tileId;
@@ -73,7 +72,10 @@ public partial class tile_map : TileMap
 
 	public void rotatePiece(int direction)
 	{
-	
+		if (!canRotate())
+		{
+			return;
+		}
 		clearPiece();
 		Vector2I[] piece = pieces[pieceTypes[0]];
 		for (int i = 0; i < piece.Length; i++)
@@ -182,7 +184,7 @@ public partial class tile_map : TileMap
 		foreach (Vector2I cell in getCurrentPiece())
 		{
 			Vector2I newCoordinates = clockwiseRotationMatrix[0] * cell.X + clockwiseRotationMatrix[1] * cell.Y;
-			if (!isTileFree(newCoordinates))
+			if (!isTileFree(newCoordinates + currentPosition))
 				return false;
 		}
 		return true;
@@ -193,7 +195,7 @@ public partial class tile_map : TileMap
 		{
 
 			string currentCellColor = currentPieceColors[0][i].ToString();
-			if (!isTileFree(currentPosition + getCurrentPiece()[i] + dir) && currentCellColor == "R")
+			if (!isTileFree(currentPosition + getCurrentPiece()[i] + dir) && (currentCellColor == "R" || currentCellColor == "B"))
 				return true;
 		}
 
