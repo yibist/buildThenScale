@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://nnvv7dubp66w"]
+[gd_scene load_steps=13 format=3 uid="uid://nnvv7dubp66w"]
 
+[ext_resource type="Script" path="res://scripts/portal.cs" id="1_8apyo"]
 [ext_resource type="Texture2D" uid="uid://bopxs7my8jxls" path="res://assets/portal.png" id="1_dshj0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yjv7"]
@@ -69,6 +70,7 @@ animations = [{
 }]
 
 [node name="Portal" type="Area2D"]
+script = ExtResource("1_8apyo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4yjv7")
@@ -77,4 +79,7 @@ shape = SubResource("CircleShape2D_4yjv7")
 z_index = 1
 scale = Vector2(0.998589, 1.06234)
 sprite_frames = SubResource("SpriteFrames_l61hh")
-frame_progress = 0.0794825
+autoplay = "default"
+frame_progress = 0.752177
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]

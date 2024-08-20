@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bilpr7kntwmlr"]
+
+[ext_resource type="Script" path="res://scripts/game.cs" id="1_txvjs"]
+[ext_resource type="PackedScene" uid="uid://mqpbwl280q71" path="res://book.tscn" id="2_l6g6g"]
+[ext_resource type="FontFile" uid="uid://bixolyai7tqtb" path="res://assets/Minecraft.ttf" id="3_1qjnt"]
+[ext_resource type="PackedScene" uid="uid://bgfg4pwmftq0b" path="res://player.tscn" id="3_p1jgq"]
+[ext_resource type="PackedScene" uid="uid://nnvv7dubp66w" path="res://portal.tscn" id="4_hk0io"]
+[ext_resource type="PackedScene" uid="uid://dqocy348bie65" path="res://tile_map.tscn" id="5_qieoi"]
+
+[node name="level3" type="Node2D"]
+script = ExtResource("1_txvjs")
+
+[node name="book" parent="." instance=ExtResource("2_l6g6g")]
+position = Vector2(83, -17)
+currentPieceColors = PackedStringArray("YYYY")
+pieces = PackedStringArray("O")
+startingPostition = Vector2i(5, -5)
+
+[node name="Label" type="Label" parent="book"]
+offset_left = -75.0
+offset_top = -134.0
+offset_right = 275.0
+offset_bottom = -78.0
+theme_override_fonts/font = ExtResource("3_1qjnt")
+text = "Dieferent colored pieces have
+different properties."
+
+[node name="player" parent="." instance=ExtResource("3_p1jgq")]
+position = Vector2(119, -20)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -22)
+scale = Vector2(1e-05, 1)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_right = 1000000
+limit_bottom = 48
+limit_smoothed = true
+
+[node name="Portal" parent="." instance=ExtResource("4_hk0io")]
+position = Vector2(221, -183)
+
+[node name="TileMap" parent="." instance=ExtResource("5_qieoi")]
+position = Vector2(176, 0)

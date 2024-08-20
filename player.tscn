@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgfg4pwmftq0b"]
+[gd_scene load_steps=19 format=3 uid="uid://bgfg4pwmftq0b"]
 
 [ext_resource type="Texture2D" uid="uid://cbvsiavleoygy" path="res://assets/wiz1.png" id="1_2sgsu"]
 [ext_resource type="Script" path="res://scripts/player.cs" id="1_q87kh"]
@@ -110,16 +110,27 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exuwi"]
 size = Vector2(15, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4kpi"]
+size = Vector2(17, 30)
+
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 script = ExtResource("1_q87kh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_d5b6l")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.234518
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(-0.5, -14)
 shape = SubResource("RectangleShape2D_exuwi")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_d4kpi")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="onArea2dBodyEntered"]

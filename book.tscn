@@ -233,4 +233,8 @@ shape = SubResource("RectangleShape2D_8034d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6irp4")
 animation = &"closed"
-frame_progress = 0.987883
+autoplay = "closed"
+frame_progress = 0.540308
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]
+[connection signal="body_exited" from="." to="." method="onBodyExited"]
